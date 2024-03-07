@@ -1,0 +1,14 @@
+<RCC>
+  <qresource>
+    <file>image/UTELocker Welcome.png</file>
+    <file>image/bt_back.png</file>
+    <file>image/scan_qr.png</file>
+    <file>image/bt_code.png</file>
+    <file>image/left.png</file>
+    <file>image/bt_code_cliked.png</file>
+    <file>image/bt_qr.png</file>
+    <file>image/bt_qr_cliked.png</file>
+    <file>image/main_ui.png</file>
+    <file>image/bt_back.png</file>
+  </qresource>
+</RCC>
