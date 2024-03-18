@@ -39,14 +39,33 @@ def get_current_time():
         print("An error occurred:", e)
         return None
 
-def generate_hash(input_string):
+def generate_hash(formatted_date):
+    
+    input_string = f"{code_secret}|{key_secret}|{formatted_date}"
+    print("Input String: ",input_string)
 
-    hash_object = hashlib.sha256()
+    hash_object = hashlib.sha512()
 
     hash_object.update(input_string.encode())
+    
+    print(hash_object.hexdigest())
 
     return hash_object.hexdigest()
 
+def re_gen_api_header():
+    
+    date_string = get_current_time()
+
+    date_time = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%f%z")
+
+    formatted_date = date_time.strftime("%Y/%m/%d %H:%M")
+    
+    # formatted_date = "2024/03/07 16:46"        
+    hash_code = generate_hash(formatted_date)
+    
+    api_headers["X-License-Hash"] = hash_code
+    api_headers["X-License-Time"] = formatted_date
+    print(api_headers)
 
 class checkOpenLocker(QThread):
     finished_signal = pyqtSignal()
@@ -55,7 +74,7 @@ class checkOpenLocker(QThread):
         super(checkOpenLocker, self).__init__(parent)
 
     def run(self):
-        api_interval = 6000 # Thời gian giữa các lần gửi API (đơn vị: giây)
+        api_interval = 60 # Thời gian giữa các lần gửi API (đơn vị: giây)
         last_api_time = time.time()
         while True:
             current_time = time.time()
@@ -102,7 +121,7 @@ class SendAPI(QThread):
         super(SendAPI, self).__init__(parent)
 
     def run(self):
-        api_interval = 5  # Thời gian giữa các lần gửi API (đơn vị: giây)
+        api_interval = 60  # Thời gian giữa các lần gửi API (đơn vị: giây)
         last_api_time = time.time()
 
         while True:
@@ -111,19 +130,22 @@ class SendAPI(QThread):
             if current_time - last_api_time >= api_interval:
                 #Get Sync API
                 
+                re_gen_api_header()
+                
                 global lock_password_dict
                 try:
+                        print(api_headers)
                         sync_response = requests.get(sync_url, headers=api_headers)
                 except:
                     print("Send API Error")
                 sync_response.raise_for_status()
-                # data = sync_response.json().get("data", [])
-                # lock_password_dict = {item.get("pin_code", ""): item.get("row", "") for item in data}
-                # print(str(lock_password_dict))
-                # #Get Log-active API               
-                # log_response = requests.get(log_active_url, headers=api_headers)
-                # log_response.raise_for_status()
-                # print(log_response.text)
+                data = sync_response.json().get("data", [])
+                lock_password_dict = {item.get("pin_code", ""): item.get("row", "") for item in data}
+                print(str(lock_password_dict))
+                #Get Log-active API               
+                log_response = requests.get(log_active_url, headers=api_headers)
+                log_response.raise_for_status()
+                print(log_response.text)
                 
                     
                 last_api_time = current_time
