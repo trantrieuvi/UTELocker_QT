@@ -33,7 +33,7 @@ def get_current_time():
             current_time = data['datetime']
             return current_time
         else:
-            print("Failed to retrieve time from the internet.")
+            # print("Failed to retrieve time from the internet.")
             return None
     except Exception as e:
         print("An error occurred:", e)
@@ -42,13 +42,13 @@ def get_current_time():
 def generate_hash(formatted_date):
     
     input_string = f"{code_secret}|{key_secret}|{formatted_date}"
-    print("Input String: ",input_string)
+    # print("Input String: ",input_string)
 
     hash_object = hashlib.sha512()
 
     hash_object.update(input_string.encode())
     
-    print(hash_object.hexdigest())
+    # print(hash_object.hexdigest())
 
     return hash_object.hexdigest()
 
@@ -65,7 +65,7 @@ def re_gen_api_header():
     
     api_headers["X-License-Hash"] = hash_code
     api_headers["X-License-Time"] = formatted_date
-    print(api_headers)
+    # print(api_headers)
 
 class checkOpenLocker(QThread):
     finished_signal = pyqtSignal()
@@ -74,7 +74,7 @@ class checkOpenLocker(QThread):
         super(checkOpenLocker, self).__init__(parent)
 
     def run(self):
-        api_interval = 60 # Thời gian giữa các lần gửi API (đơn vị: giây)
+        api_interval = 5 # Thời gian giữa các lần gửi API (đơn vị: giây)
         last_api_time = time.time()
         while True:
             current_time = time.time()
@@ -121,7 +121,7 @@ class SendAPI(QThread):
         super(SendAPI, self).__init__(parent)
 
     def run(self):
-        api_interval = 60  # Thời gian giữa các lần gửi API (đơn vị: giây)
+        api_interval = 5  # Thời gian giữa các lần gửi API (đơn vị: giây)
         last_api_time = time.time()
 
         while True:
@@ -134,18 +134,26 @@ class SendAPI(QThread):
                 
                 global lock_password_dict
                 try:
-                        print(api_headers)
+                        # print(api_headers)
                         sync_response = requests.get(sync_url, headers=api_headers)
+                        sync_response.raise_for_status()
+                        data = sync_response.json().get("data", [])
+                        lock_password_dict = {item.get("pin_code", ""): item.get("numOfLocker", "") for item in data}
+                        print(str(lock_password_dict))
                 except:
                     print("Send API Error")
-                sync_response.raise_for_status()
-                data = sync_response.json().get("data", [])
-                lock_password_dict = {item.get("pin_code", ""): item.get("slot_number", "") for item in data}
-                print(str(lock_password_dict))
-                #Get Log-active API               
-                log_response = requests.get(log_active_url, headers=api_headers)
-                log_response.raise_for_status()
-                print(log_response.text)
+                # sync_response.raise_for_status()
+                # data = sync_response.json().get("data", [])
+                # lock_password_dict = {item.get("pin_code", ""): item.get("numOfLocker", "") for item in data}
+                # print(str(lock_password_dict))
+                
+                #Get Log-active API             
+                try:  
+                    log_response = requests.get(log_active_url, headers=api_headers)
+                    log_response.raise_for_status()
+                    # print(log_response.text)
+                except:
+                    print("Send API LOG ERROR")
                 
                     
                 last_api_time = current_time
@@ -194,7 +202,7 @@ class MainWindow(QMainWindow):
         # self.serial_port = serial.Serial('/dev/ttyS0', 9600)
         self.api_timeout = 10
         self.mode = USER_MODE
-        self.addmin_pass = "000000"
+        self.addmin_pass = "146149"
         self.count = 0
         self.current_use_pass = ''
         
@@ -275,7 +283,7 @@ class MainWindow(QMainWindow):
                 print("Type: ", type(lockerNumber))
                 # mySerialPort = self.start_uart()
                 # self.send_uart(lockerNumber, mySerialPort)
-                self.exec_uart(lockerNumber-1)
+                self.exec_uart(lockerNumber)
                 
             except Exception as e:
                 print("Error:", e)
@@ -315,6 +323,7 @@ class MainWindow(QMainWindow):
         mySerial.close()
 
     def start_spinner(self):
+        self.uic.waiting_msg.move(130,250)
         self.uic.waiting_msg.show()
         self.waiting_spinner.start()
 

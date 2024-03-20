@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>598</width>
+    <height>1024</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>600</width>
+      <height>1024</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#scan_qr
+{
+	background-color: #FFFFFE;
+}</string>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="main_menu">
+     <property name="styleSheet">
+      <string notr="true">#main_menu
+{
+background-image: url(:/image/UTELocker Welcome.png);
+}</string>
+     </property>
+     <widget class="QPushButton" name="bt_code">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>591</y>
+        <width>520</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>17</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#bt_code
+{
+    border-radius: 34px;
+    padding: 5px;
+    background-color: #0b9964;
+	color: #ffffff;
+    text-align: center;
+	font-family: Arial; font-size: 17pt; font-weight: bold;
+}
+#bt_code:pressed {
+                background-color: #ffffff; /* Màu nền khi nút được nhấn */
+            }</string>
+      </property>
+      <property name="text">
+       <string>Enter</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt_qr">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>881</y>
+        <width>520</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>17</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#bt_qr
+{
+    border-radius: 34px;
+    padding: 5px;
+    background-color: #0b9964;
+	color: #ffffff;
+    text-align: center;
+	font-family: Arial; font-size: 17pt; font-weight: bold;
+}
+#bt_qr:pressed {
+                background-color: #ffffff; /* Màu nền khi nút được nhấn */
+            }</string>
+      </property>
+      <property name="text">
+       <string>Scan</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ad_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>600</width>
+        <height>250</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget">
+     <property name="styleSheet">
+      <string notr="true">#enter_code
+{
+	background-color: #FFFFFE;
+}</string>
+     </property>
+     <widget class="QPushButton" name="bt9">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>600</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#btDel:pressed {
+                background-color: #fffffe; /* Màu nền khi nút được nhấn */
+            }</string>
+      </property>
+      <property name="text">
+       <string>9</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt2">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>760</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt1">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>760</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt3">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>760</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>3</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt7">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>600</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>7</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btSao">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>840</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>*</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt6">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>680</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>6</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btDel">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>840</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>DEL</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt0">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>840</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt8">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>600</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>8</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt4">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>680</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt5">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>680</y>
+        <width>120</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btSubmit">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>410</y>
+        <width>160</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#btSubmit
+{
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #0b9964;
+	color: #ffffff;
+    text-align: center;
+	font-family: Arial; font-size: 12pt; font-weight: bold;
+}
+#btSubmit:pressed {
+                background-color: #ffffff; /* Màu nền khi nút được nhấn */
+            }</string>
+      </property>
+      <property name="text">
+       <string>Submit</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bt_back_enter_code">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>-5</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#bt_back_enter_code
+{
+	background-image: url(:/image/bt_back.png);
+	border-radius: 1px;
+}
+#bt_back_enter_code:pressed
+{
+	border-radius: 1px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>142</x>
+        <y>240</y>
+        <width>316</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTextEdit 
+{
+	border: 2px solid #000000;
+	border-radius: 10px;
+	padding: 5px;
+	padding-left: 26px;
+	background-color: #ffffff;
+	text-align: center;
+	letter-spacing: 20px;
+}
+QTextEdit::verticalScrollBar,
+            QTextEdit::horizontalScrollBar {
+                width: 0;
+            }
+QTextEdit::cursor {
+                width: 2px;
+                background-color: red;
+                margin-left: 30px; /* Khoảng cách từ mép trái */
+            }
+</string>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhMultiLine</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="placeholderText">
+       <string> ------</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="waiting_msg">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>-50</y>
+        <width>341</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#waiting_msg {
+    width: 300px; /* Đặt chiều rộng cho label */
+    height: 201px; /* Đặt chiều cao cho label */
+    border-radius: 15px;
+    padding: 0 30px 0 30px; /* 0 phía trên, 5px phía trái và phải, 0 phía dưới */
+    background-color: #DCF2F1;
+	text-align: center;
+    color: #000000;
+    font: 14pt &quot;Calibri&quot;;
+    padding-bottom: 90px; /* Khoảng cách 20px từ trên cùng */
+}</string>
+      </property>
+      <property name="text">
+       <string>Please wait a moment...</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QFrame" name="confirm_popup">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>-60</y>
+        <width>501</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="confirm_msg">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>441</width>
+         <height>241</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#confirm_msg {
+    width: 300px; /* Đặt chiều rộng cho label */
+    height: 201px; /* Đặt chiều cao cho label */
+    border-radius: 15px;
+    padding: 10px 20px 0 20px; /* 0 phía trên, 5px phía trái và phải, 0 phía dưới */
+    background-color: #DCF2F1;
+	text-align: center;
+    color: #000000;
+    font: 14pt &quot;Calibri&quot;;
+    padding-bottom: 90px; /* Khoảng cách 20px từ trên cùng */
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btConfirm">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>200</y>
+         <width>160</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#btConfirm
+{
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #0b9964;
+	color: #ffffff;
+    text-align: center;
+	font-family: Arial; font-size: 12pt; font-weight: bold;
+}
+#btSubmit:pressed {
+                background-color: #ffffff; /* Màu nền khi nút được nhấn */
+            }</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="wrong_pass_label">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>520</y>
+        <width>541</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#wrong_pass_label
+{
+	font: 14pt &quot;Calibri&quot;;
+	color: &quot;red&quot;
+}</string>
+      </property>
+      <property name="text">
+       <string>We couldn't find a locker corresponding to your code</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btOpenAll">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>410</y>
+        <width>160</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#btOpenAll
+{
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #0b9964;
+	color: #ffffff;
+    text-align: center;
+	font-family: Arial; font-size: 12pt; font-weight: bold;
+}
+#btOpenAll:pressed {
+                background-color: #ffffff; /* Màu nền khi nút được nhấn */
+            }</string>
+      </property>
+      <property name="text">
+       <string>Open All</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QFrame" name="admin_popup">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>550</y>
+        <width>501</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="admin_msg">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>441</width>
+         <height>241</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#admin_msg {
+    width: 300px; /* Đặt chiều rộng cho label */
+    height: 201px; /* Đặt chiều cao cho label */
+    border-radius: 15px;
+    padding: 10px 20px 0 20px; /* 0 phía trên, 5px phía trái và phải, 0 phía dưới */
+    background-color: #DCF2F1;
+	text-align: center;
+    color: #000000;
+    font: 14pt &quot;Calibri&quot;;
+    padding-bottom: 90px; /* Khoảng cách 20px từ trên cùng */
+}</string>
+       </property>
+       <property name="text">
+        <string>WELCOME TO THE ADMIN MODE!
+ Enter the locker number you wish to open and press the 'Submit' button.
+ If you want to open all lockers, press the 'Open All' button</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btGotIt">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>200</y>
+         <width>160</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#btGotIt
+{
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #0b9964;
+	color: #ffffff;
+    text-align: center;
+	font-family: Arial; font-size: 12pt; font-weight: bold;
+}
+#btGotIt:pressed {
+                background-color: #ffffff; /* Màu nền khi nút được nhấn */
+            }</string>
+       </property>
+       <property name="text">
+        <string>Got It!</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="btOpenLock">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>320</y>
+        <width>160</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#btOpenLock
+{
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #0b9964;
+	color: #ffffff;
+    text-align: center;
+	font-family: Arial; font-size: 12pt; font-weight: bold;
+}
+#btOpenLock:pressed {
+                background-color: #ffffff; /* Màu nền khi nút được nhấn */
+            }</string>
+      </property>
+      <property name="text">
+       <string>SUBMIT</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="scan_qr">
+     <property name="styleSheet">
+      <string notr="true">#scan_qr
+{
+	
+	background-image: url(:/image/QR_UNLOCK.png);
+}</string>
+     </property>
+     <widget class="QPushButton" name="bt_back_scan_qr">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>-5</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#bt_back_scan_qr
+{
+	
+	background-image: url(:/image/bt_back.png);
+	border-radius: 1px;
+}
+#bt_back_scan_qr:pressed
+{
+	border-radius: 1px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>598</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -73,45 +73,45 @@ class checkOpenLocker(QThread):
     def __init__(self, parent=None):
         super(checkOpenLocker, self).__init__(parent)
 
-    def run(self):
-        api_interval = 60 # Thời gian giữa các lần gửi API (đơn vị: giây)
-        last_api_time = time.time()
-        while True:
-            current_time = time.time()
+    # def run(self):
+    #     api_interval = 60 # Thời gian giữa các lần gửi API (đơn vị: giây)
+    #     last_api_time = time.time()
+    #     while True:
+    #         current_time = time.time()
 
-            if current_time - last_api_time >= api_interval:
-                print("Check locker:")
-                print("TIME DICT: ",recent_open_time_dict)
-                serial_port = serial.Serial('/dev/ttyS0', 9600, timeout=3)
-                lockerNumberStr = '100'
-                serial_port.write(lockerNumberStr.encode())
+    #         if current_time - last_api_time >= api_interval:
+    #             print("Check locker:")
+    #             print("TIME DICT: ",recent_open_time_dict)
+    #             serial_port2 = serial.Serial('/dev/ttyS0', 9600, timeout=3)
+    #             lockerNumberStr = '100'
+    #             serial_port2.write(lockerNumberStr.encode())
                 
-                print("Run receive_uart")
-                received_data = serial_port.read(256)
-                print("Received data:", received_data)
-                if recent_open_time_dict != '':
-                    for id,open_time in recent_open_time_dict.items():
-                        for locker in received_data[:-1]:
-                            if id == locker:
-                                current_time_open = get_current_time()
-                                time_to_subtract = open_time
-                                current_time_dt = datetime.fromisoformat(current_time_open)
-                                time_to_subtract_dt = datetime.fromisoformat(time_to_subtract)
+    #             print("Run receive_uart")
+    #             received_data = serial_port2.read(256)
+    #             print("Received data:", received_data)
+    #             if recent_open_time_dict != '':
+    #                 for id,open_time in recent_open_time_dict.items():
+    #                     for locker in received_data[:-1]:
+    #                         if id == locker:
+    #                             current_time_open = get_current_time()
+    #                             time_to_subtract = open_time
+    #                             current_time_dt = datetime.fromisoformat(current_time_open)
+    #                             time_to_subtract_dt = datetime.fromisoformat(time_to_subtract)
                                 
-                                time_difference = current_time_dt - time_to_subtract_dt
+    #                             time_difference = current_time_dt - time_to_subtract_dt
 
-                                # Khoảng thời gian mong muốn (5 phút)
-                                desired_difference = timedelta(seconds=120)
+    #                             # Khoảng thời gian mong muốn (5 phút)
+    #                             desired_difference = timedelta(seconds=120)
 
-                                # So sánh kết quả với khoảng thời gian mong muốn
-                                if time_difference >= desired_difference:
-                                    print("Chênh lệch thời gian là 5 phút hoặc nhiều hơn.")
-                                else:
-                                    print("Chênh lệch thời gian là dưới 5 phút.")             
-                last_api_time = current_time
-                serial_port.close()
+    #                             # So sánh kết quả với khoảng thời gian mong muốn
+    #                             if time_difference >= desired_difference:
+    #                                 print("Chênh lệch thời gian là 5 phút hoặc nhiều hơn.")
+    #                             else:
+    #                                 print("Chênh lệch thời gian là dưới 5 phút.")             
+    #             last_api_time = current_time
+    #             serial_port2.close()
                 
-            time.sleep(1)
+    #         time.sleep(1)
                 
 
 class SendAPI(QThread):
@@ -526,6 +526,7 @@ class MainWindow(QMainWindow):
                     return UNLOCK_OK
                 else:
                     return UNLOCK_ERROR
+        serial_port.close()
     def get_current_time(self):
         try:
             response = requests.get('http://worldtimeapi.org/api/timezone/Asia/Ho_Chi_Minh')
